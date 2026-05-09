@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>商业保理产品操作指引审阅意见｜极简演示版</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background: #050505;
+      color: #fff;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .deck {
+      position: relative;
+      width: min(100vw, 56.25vh);
+      height: min(100vh, 177.78vw);
+      max-width: 480px;
+      max-height: 853px;
+      background: #000;
+      overflow: hidden;
+      box-shadow: 0 0 80px rgba(0,0,0,.75);
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 46px 34px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: opacity .5s ease, transform .5s ease;
+      overflow: hidden;
+    }
+    .slide.active { opacity: 1; transform: translateX(0); z-index: 2; }
+    .slide.prev { transform: translateX(-100%); }
+    .spot {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .32;
+      animation: float 18s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .spot.blue { background: #2563eb; right: -90px; top: 80px; }
+    .spot.purple { background: #7c3aed; left: -110px; bottom: 110px; animation-delay: -6s; }
+    .spot.cyan { background: #06b6d4; right: 40px; bottom: -120px; animation-delay: -10s; }
+    @keyframes float {
+      0%,100% { transform: translate(0,0) scale(1); }
+      25% { transform: translate(36px,-28px) scale(1.08); }
+      50% { transform: translate(-28px,42px) scale(.96); }
+      75% { transform: translate(-44px,-18px) scale(1.04); }
+    }
+    .content { position: relative; z-index: 3; }
+    .eyebrow {
+      color: #60a5fa;
+      font-size: 13px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    h1, h2, p { margin: 0; }
+    h1 {
+      font-size: clamp(42px, 10vw, 58px);
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -.06em;
+    }
+    h2 {
+      font-size: clamp(34px, 8.6vw, 48px);
+      line-height: 1.12;
+      font-weight: 900;
+      letter-spacing: -.05em;
+    }
+    .subtitle {
+      margin-top: 22px;
+      color: #9ca3af;
+      font-size: 19px;
+      line-height: 1.55;
+      font-weight: 300;
+    }
+    .big {
+      font-size: clamp(64px, 18vw, 96px);
+      line-height: .95;
+      font-weight: 900;
+      letter-spacing: -.08em;
+    }
+    .quote-mark { font-size: 82px; color: rgba(255,255,255,.2); line-height: .8; }
+    .quote { font-size: 30px; line-height: 1.28; font-weight: 800; letter-spacing: -.04em; }
+    .muted { color: #9ca3af; }
+    .list { display: grid; gap: 18px; margin-top: 30px; }
+    .item {
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.045);
+      border-radius: 18px;
+      padding: 18px 18px;
+      backdrop-filter: blur(8px);
+    }
+    .item strong { display: block; font-size: 22px; line-height: 1.25; }
+    .item span { display: block; margin-top: 7px; color: #9ca3af; font-size: 15px; line-height: 1.45; }
+    .num {
+      display: block;
+      font-size: 72px;
+      line-height: .9;
+      font-weight: 900;
+      color: #3b82f6;
+      letter-spacing: -.08em;
+      margin-bottom: 20px;
+    }
+    .compare { display: grid; gap: 26px; margin-top: 34px; }
+    .old { color: #f87171; text-decoration: line-through; font-size: 25px; font-weight: 700; }
+    .new { color: #4ade80; font-size: 31px; font-weight: 900; line-height: 1.2; }
+    .bar {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 28px;
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.14);
+      z-index: 8;
+    }
+    .bar > i { display: block; height: 100%; width: 0%; background: #fff; border-radius: inherit; transition: width .35s ease; }
+    .count {
+      position: absolute;
+      right: 26px;
+      bottom: 38px;
+      z-index: 8;
+      color: #9ca3af;
+      font-size: 12px;
+      letter-spacing: .08em;
+    }
+    .hint {
+      position: absolute;
+      left: 26px;
+      bottom: 38px;
+      z-index: 8;
+      color: #6b7280;
+      font-size: 12px;
+    }
+    .tag {
+      display: inline-flex;
+      width: fit-content;
+      margin-top: 22px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #bfdbfe;
+      border: 1px solid rgba(96,165,250,.35);
+      background: rgba(37,99,235,.16);
+      font-size: 13px;
+    }
+    .small { font-size: 16px; line-height: 1.65; color: #a1a1aa; }
+  </style>
+</head>
+<body>
+  <main class="deck" id="deck">
+    <section class="slide active">
+      <div class="spot blue"></div><div class="spot purple"></div><div class="spot cyan"></div>
+      <div class="content">
+        <div class="eyebrow">REVIEW OPINION</div>
+        <h1>商业保理<br>产品指引</h1>
+        <p class="subtitle">产品设计与风险控制视角<br>一份操作指引，不能只是产品清单。</p>
+        <span class="tag">极简演示版</span>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="spot blue"></div><div class="spot purple"></div>
+      <div class="content">
+        <div class="eyebrow">CORE JUDGEMENT</div>
+        <h2>方向有价值<br>但还不能落地</h2>
+        <p class="subtitle">它有市场感，也有场景意识。<br>但距离正式“操作指引”，还缺执行标准。</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="spot cyan"></div><div class="spot purple"></div>
+      <div class="content">
+        <span class="num">01</span>
+        <h2>先定性质</h2>
+        <p class="subtitle">是营销指引？<br>还是制度文件？</p>
+        <p class="small" style="margin-top:22px;">如果是制度，就必须补齐准入、资料、审批、放款、贷后、预警和退出。</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="spot blue"></div><div class="spot cyan"></div>
+      <div class="content">
+        <div class="quote-mark">“</div>
+        <p class="quote">不能用<br>“资金闭环”<br>解释所有风险</p>
+        <p class="subtitle">不同产品，法律基础、还款来源、风控抓手完全不同。</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="spot purple"></div><div class="spot blue"></div>
+      <div class="content">
+        <div class="eyebrow">BOUNDARY</div>
+        <h2>订单融资<br>要单列试点</h2>
+        <p class="subtitle">没有应收账款，只有订单。<br>它不应与成熟保理产品并列表述。</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="spot cyan"></div><div class="spot blue"></div>
+      <div class="content">
+        <span class="num">02</span>
+        <h2>基础资产<br>必须说清</h2>
+        <div class="list">
+          <div class="item"><strong>真实</strong><span>交易真实、合法、可验证</span></div>
+          <div class="item"><strong>可转让</strong><span>无禁止转让、抵销、争议</span></div>
+          <div class="item"><strong>可登记</strong><span>完成人行统一登记公示</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="spot purple"></div><div class="spot cyan"></div>
+      <div class="content">
+        <h2>暗保理<br>不能只靠三单合一</h2>
+        <p class="subtitle">还要看老客户基础、买方付款习惯、争议率和异常触发机制。</p>
+        <span class="tag">逾期 / 争议 / 回款异常 → 转明或通知债务人</span>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="spot blue"></div><div class="spot purple"></div>
+      <div class="content">
+        <div class="eyebrow">NEGATIVE LIST</div>
+        <h2>商品包销<br>要有负面清单</h2>
+        <div class="list">
+          <div class="item"><strong>价格波动大</strong><span>酒类、生鲜、农产品需审慎</span></div>
+          <div class="item"><strong>货权控不住</strong><span>仓储监管不能落地的不做</span></div>
+          <div class="item"><strong>销售风险外溢</strong><span>不能让公司承担去化风险</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="spot cyan"></div><div class="spot purple"></div>
+      <div class="content">
+        <h2>政府类项目<br>不能只看预算</h2>
+        <p class="subtitle">严禁新增隐性债务。<br>不得以财政兜底、政府承诺函作为主要还款依据。</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="spot blue"></div><div class="spot cyan"></div>
+      <div class="content">
+        <span class="num">03</span>
+        <h2>电商保理<br>看可结算金额</h2>
+        <p class="subtitle">不是订单金额。<br>要扣除退款、拒付、售后期、平台保证金和违规风险。</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="spot purple"></div><div class="spot blue"></div>
+      <div class="content">
+        <div class="eyebrow">OPERATION GAP</div>
+        <h2>缺的不是场景<br>是动作标准</h2>
+        <div class="list">
+          <div class="item"><strong>准入标准</strong><span>客户、买方、行业、区域</span></div>
+          <div class="item"><strong>资料清单</strong><span>合同、发票、验收、物流、确权</span></div>
+          <div class="item"><strong>贷后机制</strong><span>监控、预警、催收、退出</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="spot cyan"></div><div class="spot blue"></div>
+      <div class="content">
+        <div class="compare">
+          <div>
+            <p class="old">订单就是抵押物</p>
+          </div>
+          <div>
+            <p class="new">订单不是当然抵押物</p>
+            <p class="subtitle">营销话术必须让位于合规表达。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="spot blue"></div><div class="spot purple"></div><div class="spot cyan"></div>
+      <div class="content">
+        <h2>建议结论</h2>
+        <p class="subtitle">保留产品场景。<br>补齐操作标准。<br>高风险场景单独审慎准入。</p>
+        <p class="small" style="margin-top:26px;">修改后，再提交制度审议或业务试点。</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="spot purple"></div><div class="spot cyan"></div>
+      <div class="content">
+        <div class="quote-mark">“</div>
+        <p class="quote">一份好指引<br>不是告诉业务<br>能做什么</p>
+        <p class="subtitle">而是告诉业务：<br>什么条件下，才能做。</p>
+      </div>
+    </section>
+
+    <div class="hint">点击 / ← → 翻页</div>
+    <div class="count" id="count">1 / 14</div>
+    <div class="bar"><i id="progress"></i></div>
+  </main>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const count = document.getElementById('count');
+    const progress = document.getElementById('progress');
+    let current = 0;
+    function show(i) {
+      current = Math.max(0, Math.min(slides.length - 1, i));
+      slides.forEach((s, idx) => {
+        s.classList.toggle('active', idx === current);
+        s.classList.toggle('prev', idx < current);
+      });
+      count.textContent = `${current + 1} / ${slides.length}`;
+      progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    }
+    function next(){ show(current + 1); }
+    function prev(){ show(current - 1); }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') next();
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') prev();
+    });
+    document.getElementById('deck').addEventListener('click', next);
+    let sx = 0;
+    document.addEventListener('touchstart', e => sx = e.changedTouches[0].clientX, {passive:true});
+    document.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) dx < 0 ? next() : prev();
+    }, {passive:true});
+    show(0);
+  </script>
+</body>
+</html>
