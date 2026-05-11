@@ -1,0 +1,1545 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <title>商业保理产品操作指引 V3.0</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --paper: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #e5e7eb;
+      --brand: #1f4e79;
+      --brand2: #0f766e;
+      --soft: #eef6ff;
+      --warn: #fff7ed;
+      --shadow: 0 18px 50px rgba(15, 23, 42, .10);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top left, #eaf3ff 0, transparent 32rem), var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+      line-height: 1.75;
+    }
+    .layout { display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 28px; max-width: 1420px; margin: 0 auto; padding: 28px; }
+    aside { position: sticky; top: 24px; height: calc(100vh - 48px); overflow: auto; padding: 20px; background: rgba(255,255,255,.78); backdrop-filter: blur(14px); border: 1px solid rgba(229,231,235,.9); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .toc-title { font-weight: 800; color: var(--brand); margin-bottom: 12px; }
+    .toc-sub { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+    aside a { display: block; color: #344054; text-decoration: none; border-radius: 10px; padding: 7px 9px; font-size: 14px; line-height: 1.45; }
+    aside a:hover { background: var(--soft); color: var(--brand); }
+    .toc-l3 { padding-left: 22px; font-size: 13px; color: #667085; }
+    main { min-width: 0; }
+    article { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); padding: 46px 54px; }
+    .hero { margin: -46px -54px 34px; padding: 52px 54px 42px; border-radius: 24px 24px 0 0; background: linear-gradient(135deg, #123a5a, #1f4e79 52%, #0f766e); color: white; }
+    .hero h1 { margin: 0 0 18px; font-size: clamp(30px, 4vw, 48px); line-height: 1.18; letter-spacing: -0.03em; }
+    .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .pill { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.24); font-size: 14px; }
+    h1, h2, h3, h4 { line-height: 1.35; color: #111827; scroll-margin-top: 20px; }
+    article > h1:first-child { display: none; }
+    h2 { margin-top: 46px; padding-top: 28px; border-top: 1px solid var(--line); font-size: 28px; color: var(--brand); }
+    h3 { margin-top: 30px; font-size: 21px; }
+    h4 { margin-top: 24px; font-size: 17px; color: #344054; }
+    .anchor { opacity: 0; margin-left: .35em; color: #98a2b3; text-decoration: none; font-weight: 500; }
+    h2:hover .anchor, h3:hover .anchor, h4:hover .anchor { opacity: 1; }
+    p { margin: 12px 0; }
+    strong { color: #0f3d5f; }
+    hr { border: none; border-top: 1px solid var(--line); margin: 34px 0; }
+    table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 18px 0 28px; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; font-size: 14px; }
+    th, td { padding: 12px 14px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); vertical-align: top; }
+    th:last-child, td:last-child { border-right: none; }
+    tr:last-child td { border-bottom: none; }
+    th { background: #f0f5fb; color: #17324d; text-align: left; font-weight: 700; white-space: nowrap; }
+    tbody tr:nth-child(even) td { background: #fbfdff; }
+    ol, ul { padding-left: 1.45em; }
+    li { margin: 6px 0; }
+    code, pre { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+    pre { background: #0f172a; color: #e5e7eb; border-radius: 14px; padding: 18px; overflow: auto; }
+    blockquote { margin: 18px 0; padding: 12px 18px; border-left: 4px solid var(--brand2); background: #f0fdfa; border-radius: 0 12px 12px 0; }
+    .topbar { display: none; position: sticky; top: 0; z-index: 20; padding: 10px 14px; background: rgba(255,255,255,.92); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
+    .topbar a { color: var(--brand); font-weight: 700; text-decoration: none; }
+    .footer { color: var(--muted); text-align: center; font-size: 13px; margin: 22px 0 8px; }
+    @media (max-width: 980px) {
+      .topbar { display: block; }
+      .layout { display: block; padding: 14px; }
+      aside { position: relative; top: auto; height: auto; max-height: 360px; margin-bottom: 16px; }
+      article { padding: 28px 18px; border-radius: 18px; }
+      .hero { margin: -28px -18px 24px; padding: 32px 22px 28px; border-radius: 18px 18px 0 0; }
+      table { display: block; overflow-x: auto; white-space: nowrap; }
+      th, td { white-space: normal; min-width: 120px; }
+    }
+    @media print {
+      body { background: white; } aside, .topbar { display: none; } .layout { display:block; padding:0; } article { box-shadow:none; border:none; padding:0; } .hero { color:#111; background:white; border-bottom:2px solid #111; } .anchor { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar"><a href="#top">商业保理产品操作指引 V3.0</a></div>
+  <div class="layout" id="top">
+    <aside aria-label="目录">
+      <div class="toc-title">目录</div>
+      <div class="toc-sub">商业保理产品操作指引 · V3.0 业务执行版</div>
+      <a class="toc-l2" href="#第一章-总则">第一章 总则</a>
+<a class="toc-l3" href="#一-编制目的">一、编制目的</a>
+<a class="toc-l3" href="#二-风控总纲">二、风控总纲</a>
+<a class="toc-l3" href="#三-产品体系">三、产品体系</a>
+<a class="toc-l2" href="#第二章-通用风控要求">第二章 通用风控要求</a>
+<a class="toc-l3" href="#一-应收账款审查-六性-标准">一、应收账款审查&quot;六性&quot;标准</a>
+<a class="toc-l3" href="#二-通用禁入清单-一票否决项">二、通用禁入清单（一票否决项）</a>
+<a class="toc-l3" href="#三-通用放款前提条件">三、通用放款前提条件</a>
+<a class="toc-l3" href="#四-通用保后管理要求">四、通用保后管理要求</a>
+<a class="toc-l2" href="#第三章-场景一-商品包销保理">第三章 场景一：商品包销保理</a>
+<a class="toc-l3" href="#一-产品定义与适用范围">一、产品定义与适用范围</a>
+<a class="toc-l3" href="#二-场景准入条件">二、场景准入条件</a>
+<a class="toc-l3" href="#三-各品类操作要点">三、各品类操作要点</a>
+<a class="toc-l3" href="#四-场景禁入条件-商品包销通用">四、场景禁入条件（商品包销通用）</a>
+<a class="toc-l2" href="#第四章-场景二-电商应收保理-店融通">第四章 场景二：电商应收保理（&quot;店融通&quot;）</a>
+<a class="toc-l3" href="#一-产品定义">一、产品定义</a>
+<a class="toc-l3" href="#二-准入条件">二、准入条件</a>
+<a class="toc-l3" href="#三-产品要素">三、产品要素</a>
+<a class="toc-l3" href="#四-风控要点">四、风控要点</a>
+<a class="toc-l3" href="#五-保后管理特殊要求">五、保后管理特殊要求</a>
+<a class="toc-l2" href="#第五章-场景三-基建保理-六张网">第五章 场景三：基建保理（&quot;六张网&quot;）</a>
+<a class="toc-l3" href="#一-产品定义-2">一、产品定义</a>
+<a class="toc-l3" href="#二-四不接-铁律-一票否决">二、&quot;四不接&quot;铁律（一票否决）</a>
+<a class="toc-l3" href="#三-通用准入条件">三、通用准入条件</a>
+<a class="toc-l3" href="#四-各子场景操作要点">四、各子场景操作要点</a>
+<a class="toc-l3" href="#五-基建保理专项风控要求">五、基建保理专项风控要求</a>
+<a class="toc-l2" href="#第六章-场景四-产业通用保理-明保理-暗保理">第六章 场景四：产业通用保理（明保理/暗保理）</a>
+<a class="toc-l3" href="#一-产品定义-3">一、产品定义</a>
+<a class="toc-l3" href="#二-明保理与暗保理的适用条件">二、明保理与暗保理的适用条件</a>
+<a class="toc-l3" href="#三-禁转条款处理">三、禁转条款处理</a>
+<a class="toc-l3" href="#四-三单合一-核验标准">四、&quot;三单合一&quot;核验标准</a>
+<a class="toc-l3" href="#五-行业准入参考">五、行业准入参考</a>
+<a class="toc-l2" href="#第七章-场景五-订单融资">第七章 场景五：订单融资</a>
+<a class="toc-l3" href="#一-产品定义-4">一、产品定义</a>
+<a class="toc-l3" href="#二-准入条件-2">二、准入条件</a>
+<a class="toc-l3" href="#三-产品要素-2">三、产品要素</a>
+<a class="toc-l3" href="#四-规模管控">四、规模管控</a>
+<a class="toc-l3" href="#五-退出机制">五、退出机制</a>
+<a class="toc-l3" href="#六-风险警示">六、风险警示</a>
+<a class="toc-l2" href="#第八章-合规审查要求">第八章 合规审查要求</a>
+<a class="toc-l3" href="#一-合规审查要点">一、合规审查要点</a>
+<a class="toc-l3" href="#二-法律审查专项要求">二、法律审查专项要求</a>
+<a class="toc-l2" href="#第九章-审批权限与流程">第九章 审批权限与流程</a>
+<a class="toc-l3" href="#一-审批权限">一、审批权限</a>
+<a class="toc-l3" href="#二-审批流程">二、审批流程</a>
+<a class="toc-l2" href="#附录">附录</a>
+<a class="toc-l3" href="#附录一-项目申报材料清单">附录一：项目申报材料清单</a>
+<a class="toc-l3" href="#附录二-应收账款确认函模板要点">附录二：应收账款确认函模板要点</a>
+<a class="toc-l3" href="#附录三-禁入行业-主体清单">附录三：禁入行业/主体清单</a>
+    </aside>
+    <main>
+      <article>
+        <section class="hero">
+          <h1>商业保理产品操作指引</h1>
+          <div>V3.0（业务执行版）</div>
+          <div class="meta">
+            <span class="pill">编制部门：产品设计与风险管理部</span>
+            <span class="pill">适用范围：全国【陕西—大湾区为核心拓展区】</span>
+          </div>
+        </section>
+        <h1 id="商业保理产品操作指引">商业保理产品操作指引<a class="anchor" href="#商业保理产品操作指引" aria-label="定位到本节">#</a></h1>
+<p>版本：V3.0（业务执行版）</p>
+<p>编制部门：产品设计与风险管理部</p>
+<p>适用范围：全国【陕西—大湾区为核心拓展区】</p>
+<hr />
+<h2 id="第一章-总则">第一章 总则<a class="anchor" href="#第一章-总则" aria-label="定位到本节">#</a></h2>
+<h3 id="一-编制目的">一、编制目的<a class="anchor" href="#一-编制目的" aria-label="定位到本节">#</a></h3>
+<p>本指引系公司商业保理业务的操作规范文件，旨在明确各产品线的准入条件、操作流程、风险控制要求及禁入标准，为业务人员展业提供可执行的判断依据和操作规范，确保业务开展在风险可控的前提下有序推进。</p>
+<h3 id="二-风控总纲">二、风控总纲<a class="anchor" href="#二-风控总纲" aria-label="定位到本节">#</a></h3>
+<p><strong>资产真实性优先，全流程资金闭环。</strong></p>
+<p>商业保理业务的第一还款来源为债务人对应收账款的支付，而非债权人或担保人的一般偿债能力。风控逻辑应坚持&quot;先核资产、再谈保理；先锁回款、再谈授信；先排冲突、再谈入池&quot;的原则，将应收账款真实性、合法性、可转让性、权利完整性、价值确定性和可回收性审查置于主体信用评价之前。</p>
+<p>全流程资金闭环是底线要求，但资金闭环的前提是底层资产真实、合法、可执行。脱离资产真实性谈资金闭环，本质上是将保理异化为信贷。</p>
+<h3 id="三-产品体系">三、产品体系<a class="anchor" href="#三-产品体系" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>产品模式</th>
+<th>场景属性</th>
+<th>风控核心</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>商品包销保理</td>
+<td>销售场景</td>
+<td>控货+控销售回款+应收验真</td>
+</tr>
+<tr>
+<td>2</td>
+<td>电商应收保理</td>
+<td>销售场景</td>
+<td>数据直连+退货率管控+回款账户锁定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>基建保理</td>
+<td>采购场景</td>
+<td>确权/确真+财政预算+回款路径锁定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>产业通用保理（明/暗保理）</td>
+<td>采购场景</td>
+<td>主体授信+应收账款六性审查</td>
+</tr>
+<tr>
+<td>5</td>
+<td>订单融资</td>
+<td>采购/销售双场景</td>
+<td>全流程嵌入管控+主体信用兜底</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="第二章-通用风控要求">第二章 通用风控要求<a class="anchor" href="#第二章-通用风控要求" aria-label="定位到本节">#</a></h2>
+<h3 id="一-应收账款审查-六性-标准">一、应收账款审查&quot;六性&quot;标准<a class="anchor" href="#一-应收账款审查-六性-标准" aria-label="定位到本节">#</a></h3>
+<p>所有产品线均须对应收账款进行以下审查，审查结论须形成书面记录并归入项目档案：</p>
+<table>
+<thead>
+<tr>
+<th>审查维度</th>
+<th>审查内容</th>
+<th>审查方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>真实性</td>
+<td>基础交易是否真实发生，应收账款是否实际形成</td>
+<td>交叉验证：合同+发货/物流+验收+发票+纳税申报+银行流水，至少三组以上交叉匹配</td>
+</tr>
+<tr>
+<td>合法性</td>
+<td>基础合同是否合法有效，应收账款形成是否具备法律依据</td>
+<td>审查合同效力、交易背景、行业资质；关注关联交易公允性</td>
+</tr>
+<tr>
+<td>有效性</td>
+<td>债权人是否已完全履行合同主要义务，应收账款是否已到期或确定到期</td>
+<td>审查履约凭证（验收单、监理报告、签收单等）；未来应收须满足&quot;有基础法律关系&quot;条件</td>
+</tr>
+<tr>
+<td>可转让性</td>
+<td>应收账款是否可依法转让，是否存在禁止转让条款</td>
+<td>审查基础合同转让条款；民法典第545条适用分析；完成中登网转让登记</td>
+</tr>
+<tr>
+<td>权利完整性</td>
+<td>应收账款是否存在质押、查封、冻结、重复融资等权利负担</td>
+<td>中登网查询、征信查询、实地核实、出质人书面确认；已质押资产不得入池</td>
+</tr>
+<tr>
+<td>价值确定性</td>
+<td>应收账款金额是否确定、账期是否明确、回款可能性是否可评估</td>
+<td>审查合同金额与发票一致性、历史结算记录、付款习惯、回款预测模型</td>
+</tr>
+</tbody>
+</table>
+<h3 id="二-通用禁入清单-一票否决项">二、通用禁入清单（一票否决项）<a class="anchor" href="#二-通用禁入清单-一票否决项" aria-label="定位到本节">#</a></h3>
+<p>符合以下任一条件的业务，不得办理：</p>
+<ol>
+<li><strong>应收账款不真实或无法验证</strong>：基础交易无法通过交叉验证确认真实性</li>
+<li><strong>基础合同存在禁止转让条款</strong>且无法通过法律途径解决（暗保理须另行评估通知时机）</li>
+<li><strong>应收账款已质押、查封或存在权利冲突</strong>且无法解除或取得质权人书面同意</li>
+<li><strong>回款路径无法锁定</strong>：债务人不同意变更回款账户或无法签订三方监管协议</li>
+<li><strong>关联交易缺乏商业合理性</strong>：买卖双方存在关联关系且交易对价明显不公允</li>
+<li><strong>债务人已被列为失信被执行人或存在重大涉诉风险</strong></li>
+<li><strong>基础合同未经有权机关备案（涉财政资金项目）</strong></li>
+<li><strong>以票据或其他有价证券产生的单纯付款请求权</strong></li>
+<li><strong>债权人主要义务仅为给付金钱（如借贷、保证金）产生的应收账款</strong></li>
+<li><strong>应收账款权属不清或存在争议</strong></li>
+</ol>
+<h3 id="三-通用放款前提条件">三、通用放款前提条件<a class="anchor" href="#三-通用放款前提条件" aria-label="定位到本节">#</a></h3>
+<ol>
+<li>应收账款转让登记已完成（中登网）</li>
+<li>债务人确认/转让通知已送达（明保理须取得书面确认，暗保理须留存通知送达凭证）</li>
+<li>回款监管账户已开立且保理方已取得账户控制权（U盾、密码、印鉴）</li>
+<li>担保/增信措施已签署生效</li>
+<li>业务审批流程已完成且审批条件已落实</li>
+<li>法律审查意见已出具且无重大法律障碍</li>
+</ol>
+<h3 id="四-通用保后管理要求">四、通用保后管理要求<a class="anchor" href="#四-通用保后管理要求" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>管理事项</th>
+<th>频次/要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>回款到账监控</td>
+<td>逐笔核对，T+1确认</td>
+</tr>
+<tr>
+<td>间接付款识别与处理</td>
+<td>发现间接付款立即预警，要求债务人限期纠正，逾期未纠正启动违约条款</td>
+</tr>
+<tr>
+<td>应收账款到期催收</td>
+<td>到期前5个工作日发送付款提醒函</td>
+</tr>
+<tr>
+<td>保后现场检查</td>
+<td>首次放款后30日内完成首次检查；常规每季度不少于1次</td>
+</tr>
+<tr>
+<td>逾期管理</td>
+<td>逾期1日电话催收；逾期7日书面催收；逾期30日律师函；逾期90日认定为不良资产</td>
+</tr>
+<tr>
+<td>风险预警</td>
+<td>债务人/债权人涉诉、被执行、经营异常、重大舆情等即时预警</td>
+</tr>
+<tr>
+<td>中登网续登记</td>
+<td>到期前30日完成续登记</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="第三章-场景一-商品包销保理">第三章 场景一：商品包销保理<a class="anchor" href="#第三章-场景一-商品包销保理" aria-label="定位到本节">#</a></h2>
+<h3 id="一-产品定义与适用范围">一、产品定义与适用范围<a class="anchor" href="#一-产品定义与适用范围" aria-label="定位到本节">#</a></h3>
+<p>商品包销保理系指包销方将其基于包销协议对下游销售形成的应收账款转让给保理公司，由保理公司提供融资服务的业务模式。核心风控逻辑为：<strong>控货+控销售回款+应收验真</strong>。</p>
+<h3 id="二-场景准入条件">二、场景准入条件<a class="anchor" href="#二-场景准入条件" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>准入条件</th>
+<th>性质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>包销方须提供已签署的包销协议或代理协议，协议项下权利义务清晰、可转让</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>2</td>
+<td>包销商品须具备可识别、可计量、可管控的物理特征，能够实现货权控制</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>3</td>
+<td>包销方须提供下游销售渠道证明（合同、订单、历史结算记录），且下游回款路径可锁定</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>4</td>
+<td>融资期限与商品去化周期匹配，原则上不超过90天（矿产原料等特殊品类另行审批）</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>5</td>
+<td>单笔融资金额原则上不超过包销方净资产的50%</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>6</td>
+<td>包销方历史经营数据可查证（至少近6个月银行流水或销售台账）</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>7</td>
+<td>建议包销方具备相关行业经营经验1年以上</td>
+<td>风控建议</td>
+</tr>
+</tbody>
+</table>
+<h3 id="三-各品类操作要点">三、各品类操作要点<a class="anchor" href="#三-各品类操作要点" aria-label="定位到本节">#</a></h3>
+<h4 id="一-景区门票">（一）景区门票<a class="anchor" href="#一-景区门票" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>包销协议+OTA平台核销流水（近3个月）+景区门票系统后台数据</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>绑定OTA平台结算账户为保理监管账户；二道包销须查代理商核销流水</td>
+</tr>
+<tr>
+<td>质押率</td>
+<td>预付+分成模式下，预付比例≤50%</td>
+</tr>
+<tr>
+<td>风控红线</td>
+<td>景区年客流量可查证；包销协议剩余期限≥融资期限+3个月</td>
+</tr>
+</tbody>
+</table>
+<h4 id="二-酒店房源">（二）酒店房源<a class="anchor" href="#二-酒店房源" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>包销协议+会展排期表+往届订房数据；或TMC企业差旅合同</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>OTA平台结算账户/会展公司对公账户绑定监管</td>
+</tr>
+<tr>
+<td>质押率</td>
+<td>预付比例≤50%，酒店须自担50%销售风险</td>
+</tr>
+<tr>
+<td>风控红线</td>
+<td>酒店须提供近两年场地使用率数据；包销方与酒店须为非关联方（关联方须专项审查商业合理性）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="三-停车收费">（三）停车收费<a class="anchor" href="#三-停车收费" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>停车场经营权/租赁合同+收费系统后台数据+历史6个月银行流水</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>收费系统后台只读/监管权限+收款码/商户号归集至监管账户；签订收费权质押合同；代运营方不接触资金</td>
+</tr>
+<tr>
+<td>质押率</td>
+<td>可核验净现金流折算，折扣率≤50%</td>
+</tr>
+<tr>
+<td>风控红线</td>
+<td>逐项审查原始合同是否允许收费权/收益权转让；排查既有质押冲突（中登网+实地核实）；原则上仅纳入剩余合同期限充足、权利清晰、历史经营稳定的项目</td>
+</tr>
+</tbody>
+</table>
+<h4 id="四-婚庆场地">（四）婚庆场地<a class="anchor" href="#四-婚庆场地" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>场地包销协议+酒店近两年场地使用率数据+已签婚庆订单汇总</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>酒店回款账户监管+分销婚庆公司回款归集</td>
+</tr>
+<tr>
+<td>质押率</td>
+<td>预付比例≤50%，酒店须自担50%销售风险</td>
+</tr>
+<tr>
+<td>风控红线</td>
+<td>融资方为酒店/婚礼堂（非轻资产婚庆公司）；酒店须承诺场地分销</td>
+</tr>
+</tbody>
+</table>
+<h4 id="五-酒类">（五）酒类<a class="anchor" href="#五-酒类" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>包销协议+下游烟酒店/餐饮店订单（≥50家）+物流发货单（货已到终端）</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>绑定终端渠道回款账户；按订单量逐笔放款</td>
+</tr>
+<tr>
+<td>单笔限额</td>
+<td>单笔≤100万元</td>
+</tr>
+<tr>
+<td>融资期限</td>
+<td>节庆短周期包销，≤60天</td>
+</tr>
+<tr>
+<td>风控红线</td>
+<td>仅限光瓶口粮酒（30-80元/瓶）或低度快消酒饮；按物流发货单放款，不按库存放款；白酒市场下行期审慎介入</td>
+</tr>
+</tbody>
+</table>
+<h4 id="六-特色农产品">（六）特色农产品<a class="anchor" href="#六-特色农产品" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>包销协议+冷库仓单+冷库监管协议（冷库方凭保理公司指令放货）</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>仓单质押+动态赎货（卖一批赎一批）；下游回款账户监管</td>
+</tr>
+<tr>
+<td>质押率</td>
+<td>≤50%（水果价格波动大）</td>
+</tr>
+<tr>
+<td>风控红线</td>
+<td>必须指定第三方冷库并签署三方监管协议；冷库方凭保理公司书面指令方可放货，不得接受包销方单方指令</td>
+</tr>
+</tbody>
+</table>
+<h4 id="七-生鲜">（七）生鲜<a class="anchor" href="#七-生鲜" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>产地端分级包销协议+冷链物流单+商超验收单+下游采购商预付凭证（≥30%）</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>下游采购商回款至监管账户；约定下游拒收时包销方仍须按协议还款</td>
+</tr>
+<tr>
+<td>融资期限</td>
+<td>≤30天</td>
+</tr>
+<tr>
+<td>风控红线</td>
+<td>不做下游赊销的包销方；只做产地端分级包销，直接发往商超渠道（盒马等）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="八-工业材件">（八）工业材件<a class="anchor" href="#八-工业材件" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>集采协议+下游采购订单汇总表+仓库货权凭证；价格挂钩期货价格</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>控仓库+按订单量逐笔放款</td>
+</tr>
+<tr>
+<td>融资期限</td>
+<td>单品单批，周期≤90天</td>
+</tr>
+<tr>
+<td>风控红线</td>
+<td>集采平台须提供历史采购数据；放款与下游订单一一对应，禁止资金挪用</td>
+</tr>
+</tbody>
+</table>
+<h4 id="九-光伏组件">（九）光伏组件<a class="anchor" href="#九-光伏组件" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>分布式工商业屋顶EPC包销协议+并网文件+业主已付部分工程款凭证</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>电费收入/业主付款归集至监管账户</td>
+</tr>
+<tr>
+<td>单笔限额</td>
+<td>单个项目50-200万元</td>
+</tr>
+<tr>
+<td>风控红线</td>
+<td>仅做分布式工商业屋顶小EPC；须已并网且补贴文件到手；EPC包销方为安装商的，须提供业主已付部分工程款凭证</td>
+</tr>
+</tbody>
+</table>
+<h4 id="十-电子产品">（十）电子产品<a class="anchor" href="#十-电子产品" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>长期供货协议+下游采购订单+物流签收单</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>下游回款账户监管</td>
+</tr>
+<tr>
+<td>风控红线</td>
+<td>仅做单一客户长期合作；客户注册资本过低的，须追加实控人房产抵押或法人连带担保+保险</td>
+</tr>
+</tbody>
+</table>
+<h4 id="十一-矿产原料">（十一）矿产原料<a class="anchor" href="#十一-矿产原料" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>下游长协合同（如陕煤集团等大型国企）+矿企发货通知书+货权凭证</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>货物存入保理公司指定仓库（可租临时场地），不得留在矿场；下游回款至监管账户</td>
+</tr>
+<tr>
+<td>融资期限</td>
+<td>周期＞1年的须专项审批</td>
+</tr>
+<tr>
+<td>风控红线</td>
+<td>仅做大型国企下游锁定的长协业务；须取得下游长协合同+矿企发货通知书；无价格对冲机制的审慎介入</td>
+</tr>
+</tbody>
+</table>
+<h4 id="十二-医疗器械">（十二）医疗器械<a class="anchor" href="#十二-医疗器械" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>供货协议+三甲医院应收账款确权函（医院财务科盖章，不接受科室章）+耗材已进入医院SPD系统使用记录</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>医保回款账户/医院付款账户监管</td>
+</tr>
+<tr>
+<td>融资期限</td>
+<td>回款方为三甲医院且医保回款周期＜12个月</td>
+</tr>
+<tr>
+<td>风控红线</td>
+<td>一般情况不做；确权函必须由医院财务科盖章；耗材须进入SPD系统可查使用记录；医保回款周期＞12个月的不做</td>
+</tr>
+</tbody>
+</table>
+<h3 id="四-场景禁入条件-商品包销通用">四、场景禁入条件（商品包销通用）<a class="anchor" href="#四-场景禁入条件-商品包销通用" aria-label="定位到本节">#</a></h3>
+<ol>
+<li>包销方无法提供可验证的下游销售渠道或历史销售数据</li>
+<li>商品不可控（无法实现货权控制或仓储监管）</li>
+<li>去化周期与融资期限严重不匹配</li>
+<li>包销方与供货方存在关联关系且交易定价明显不公允</li>
+<li>商品属于限制流通物或需要特许经营资质但包销方不具备</li>
+</ol>
+<hr />
+<h2 id="第四章-场景二-电商应收保理-店融通">第四章 场景二：电商应收保理（&quot;店融通&quot;）<a class="anchor" href="#第四章-场景二-电商应收保理-店融通" aria-label="定位到本节">#</a></h2>
+<h3 id="一-产品定义">一、产品定义<a class="anchor" href="#一-产品定义" aria-label="定位到本节">#</a></h3>
+<p>电商应收保理系基于电商平台商家在平台已形成且待结算的应收账款，由保理公司提供短期融资服务的业务模式。核心风控逻辑为：<strong>数据直连+退货率管控+回款账户锁定</strong>。</p>
+<h3 id="二-准入条件">二、准入条件<a class="anchor" href="#二-准入条件" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>准入条件</th>
+<th>性质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>商家经营平台：抖音/淘宝/京东/拼多多/快手</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>2</td>
+<td>单店月销售额≥100万元</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>3</td>
+<td>店铺经营时间≥6个月</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>4</td>
+<td>近3个月无平台违规记录</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>5</td>
+<td>退货率≤15%</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>6</td>
+<td>店铺后台数据可对接（订单/物流/结算）</td>
+<td>硬性条件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="三-产品要素">三、产品要素<a class="anchor" href="#三-产品要素" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>融资比例</td>
+<td>应收账款金额的≤70%</td>
+</tr>
+<tr>
+<td>融资期限</td>
+<td>≤30天，随借随还</td>
+</tr>
+<tr>
+<td>放款时效</td>
+<td>T+1</td>
+</tr>
+<tr>
+<td>费率</td>
+<td>按次收费，具体以审批为准</td>
+</tr>
+</tbody>
+</table>
+<h3 id="四-风控要点">四、风控要点<a class="anchor" href="#四-风控要点" aria-label="定位到本节">#</a></h3>
+<ol>
+<li><strong>数据直连</strong>：对接店铺后台，实时获取订单、物流、结算数据，与商家自主申报数据交叉验证</li>
+<li><strong>回款账户锁定</strong>：绑定平台唯一结算账户为保理监管账户，保理款自动扣划，禁止变更回款路径</li>
+<li><strong>退货率监控</strong>：退货率＞15%时暂停新增放款；退货率＞20%时启动存量清收</li>
+<li><strong>平台处罚监控</strong>：近3个月存在虚假交易、刷单等违规处罚的，不得准入</li>
+<li><strong>多平台交叉验证</strong>：同一商家多平台经营的，合并计算销售额及退货率</li>
+</ol>
+<h3 id="五-保后管理特殊要求">五、保后管理特殊要求<a class="anchor" href="#五-保后管理特殊要求" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>管理事项</th>
+<th>频次/要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平台后台数据巡检</td>
+<td>每日</td>
+</tr>
+<tr>
+<td>退货率变动监控</td>
+<td>每周</td>
+</tr>
+<tr>
+<td>回款到账核对</td>
+<td>逐笔T+1</td>
+</tr>
+<tr>
+<td>平台违规/处罚监控</td>
+<td>实时</td>
+</tr>
+<tr>
+<td>店铺经营异常预警</td>
+<td>即时（停业、转让、降级等）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="第五章-场景三-基建保理-六张网">第五章 场景三：基建保理（&quot;六张网&quot;）<a class="anchor" href="#第五章-场景三-基建保理-六张网" aria-label="定位到本节">#</a></h2>
+<h3 id="一-产品定义-2">一、产品定义<a class="anchor" href="#一-产品定义-2" aria-label="定位到本节">#</a></h3>
+<p>基建保理系基于基础设施建设项目中供应商对总包方/业主方已形成的应收账款，由保理公司提供融资服务的业务模式。核心风控逻辑为：<strong>确权/确真+财政预算+回款路径锁定</strong>。</p>
+<h3 id="二-四不接-铁律-一票否决">二、&quot;四不接&quot;铁律（一票否决）<a class="anchor" href="#二-四不接-铁律-一票否决" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>铁律内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>❌ 合同未在政府平台备案的不接</td>
+</tr>
+<tr>
+<td>2</td>
+<td>❌ 总包方不配合提供盖章版验收单（纸质或PDF）的不接</td>
+</tr>
+<tr>
+<td>3</td>
+<td>❌ 财政预算未明确的不接</td>
+</tr>
+<tr>
+<td>4</td>
+<td>❌ 应收账款未经交叉验证的不接（不得仅凭一纸验收单即确认应收）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="三-通用准入条件">三、通用准入条件<a class="anchor" href="#三-通用准入条件" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>准入条件</th>
+<th>性质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>项目已纳入省级以上重点项目计划或财政预算安排</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>2</td>
+<td>供应商与总包方/业主方存在≥1年的历史交易记录</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>3</td>
+<td>合同已在政府相关平台备案</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>4</td>
+<td>总包方配合提供盖章版验收单/进度确认单</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>5</td>
+<td>回款路径可锁定（总包方/业主方同意付款至保理监管账户）</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>6</td>
+<td>中登网查询应收账款无既有质押或权利冲突</td>
+<td>硬性条件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="四-各子场景操作要点">四、各子场景操作要点<a class="anchor" href="#四-各子场景操作要点" aria-label="定位到本节">#</a></h3>
+<h4 id="一-水网-管材进场保理">（一）水网——管材进场保理<a class="anchor" href="#一-水网-管材进场保理" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>总包系统《进场验收单》+GPS定位记录+施工日志；交叉验证合同量与进场量</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>总包方/业主方付款至保理监管账户</td>
+</tr>
+<tr>
+<td>优先选择</td>
+<td>国家级项目（引汉济渭等）；省级以上重点项目</td>
+</tr>
+<tr>
+<td>审慎介入</td>
+<td>区县级项目，须专项审批</td>
+</tr>
+</tbody>
+</table>
+<h4 id="二-电网-光伏-智能电网配件保理">（二）电网——光伏/智能电网配件保理<a class="anchor" href="#二-电网-光伏-智能电网配件保理" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>电力设计院《技术规范书》+设备进场照片+并网承诺文件</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>电网公司付款至保理监管账户</td>
+</tr>
+<tr>
+<td>放款节奏</td>
+<td>预验收60%放款，并网后40%放款</td>
+</tr>
+<tr>
+<td>优先选择</td>
+<td>纳入省级电网年度计划的项目</td>
+</tr>
+</tbody>
+</table>
+<h4 id="三-地下管网-非开挖修复保理">（三）地下管网——非开挖修复保理<a class="anchor" href="#三-地下管网-非开挖修复保理" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>设备工时数据+施工日志+业主确权文件</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>业主方付款至保理监管账户</td>
+</tr>
+<tr>
+<td>优先选择</td>
+<td>省级以上重点项目</td>
+</tr>
+<tr>
+<td>回避</td>
+<td>低评级区县城投项目</td>
+</tr>
+</tbody>
+</table>
+<h4 id="四-物流网-冷链温控保理">（四）物流网——冷链温控保理<a class="anchor" href="#四-物流网-冷链温控保理" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>物联网温度/运行数据达标日志+签收记录+数据直连验证</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>枢纽园区/运营方付款至保理监管账户</td>
+</tr>
+<tr>
+<td>优先选择</td>
+<td>枢纽园区批量项目；数据可直连的标的</td>
+</tr>
+</tbody>
+</table>
+<h4 id="五-算力网-服务器设备保理">（五）算力网——服务器设备保理<a class="anchor" href="#五-算力网-服务器设备保理" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>采购订单+物流签收单+上架率证明</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>运营方/采购方付款至保理监管账户</td>
+</tr>
+<tr>
+<td>放款节奏</td>
+<td>阶梯放款（到货30%+上架50%+验收20%）</td>
+</tr>
+<tr>
+<td>优先选择</td>
+<td>国家超算中心供应商</td>
+</tr>
+</tbody>
+</table>
+<h4 id="六-通信网-基站坐标保理">（六）通信网——基站坐标保理<a class="anchor" href="#六-通信网-基站坐标保理" aria-label="定位到本节">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确权/确真方式</td>
+<td>基站GPS坐标+施工照片+运营商验收确认</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>运营商监管账户自动扣划</td>
+</tr>
+<tr>
+<td>放款节奏</td>
+<td>T+1放款</td>
+</tr>
+</tbody>
+</table>
+<h3 id="五-基建保理专项风控要求">五、基建保理专项风控要求<a class="anchor" href="#五-基建保理专项风控要求" aria-label="定位到本节">#</a></h3>
+<ol>
+<li><strong>验收单核验</strong>：须取得总包方盖章版验收单（纸质或PDF），不接受电子邮件扫描件+现场拍照替代。验收单内容须与合同约定交付内容一致</li>
+<li><strong>财政预算查询</strong>：须核实项目是否纳入当年财政预算，预算金额是否覆盖应收账款金额。涉区县财政的，须关注地方债务风险等级</li>
+<li><strong>间接付款监控</strong>：债务人向非监管账户付款的，视为间接付款，即时预警并要求纠正；连续发生间接付款的，启动违约条款</li>
+<li><strong>进度跟踪</strong>：关注项目实际施工进度与合同约定进度的匹配情况，进度严重滞后须专项评估</li>
+</ol>
+<hr />
+<h2 id="第六章-场景四-产业通用保理-明保理-暗保理">第六章 场景四：产业通用保理（明保理/暗保理）<a class="anchor" href="#第六章-场景四-产业通用保理-明保理-暗保理" aria-label="定位到本节">#</a></h2>
+<h3 id="一-产品定义-3">一、产品定义<a class="anchor" href="#一-产品定义-3" aria-label="定位到本节">#</a></h3>
+<p>产业通用保理系基于供应商与核心企业之间因货物/服务交易已形成的应收账款，由保理公司提供融资服务的业务模式。核心风控逻辑为：<strong>应收账款六性审查+主体信用评价</strong>，其中应收账款审查权重不低于主体信用评价。</p>
+<h3 id="二-明保理与暗保理的适用条件">二、明保理与暗保理的适用条件<a class="anchor" href="#二-明保理与暗保理的适用条件" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>明保理</th>
+<th>暗保理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>适用条件</td>
+<td>债务人配合确权且同意变更回款路径</td>
+<td>债务人不便确权或通知，但应收账款真实可验证</td>
+</tr>
+<tr>
+<td>确权要求</td>
+<td>取得债务人书面确认（盖章版应收账款确认函）</td>
+<td>不通知债务人，但须留存转让通知送达凭证备查</td>
+</tr>
+<tr>
+<td>回款控制</td>
+<td>债务人直接付款至保理监管账户</td>
+<td>债权人收到款项后划转至保理账户，须监控债权人结算账户</td>
+</tr>
+<tr>
+<td>转让登记</td>
+<td>中登网登记</td>
+<td>中登网登记</td>
+</tr>
+<tr>
+<td>风险差异</td>
+<td>回款路径确定，风险较低</td>
+<td>存在间接付款风险，回款可控性偏弱</td>
+</tr>
+</tbody>
+</table>
+<h3 id="三-禁转条款处理">三、禁转条款处理<a class="anchor" href="#三-禁转条款处理" aria-label="定位到本节">#</a></h3>
+<p>基础合同存在禁止转让条款的，按以下原则处理：</p>
+<ol>
+<li><strong>明保理</strong>：须与债务人协商修改合同条款，删除禁止转让约定或取得债务人书面同意转让函。无法取得的，不得办理</li>
+<li><strong>暗保理</strong>：依据民法典第545条，金钱债权不得转让的约定不得对抗第三人。但须注意：（1）该条款适用于金钱债权，非金钱债权不适用；（2）虽可对抗债务人，但不影响债权人与债务人之间的违约责任，须评估债权人因违约可能产生的损失对还款能力的影响；（3）建议在保理合同中约定债权人承担因违反禁转条款产生的全部损失</li>
+</ol>
+<h3 id="四-三单合一-核验标准">四、&quot;三单合一&quot;核验标准<a class="anchor" href="#四-三单合一-核验标准" aria-label="定位到本节">#</a></h3>
+<p>暗保理项下应收账款审查须满足&quot;三单合一&quot;要求，且至少两组以上交叉验证：</p>
+<table>
+<thead>
+<tr>
+<th>核验单据</th>
+<th>核验要点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>合同</td>
+<td>合同金额、标的、交付标准、付款条件、账期与应收账款金额、期限一致</td>
+</tr>
+<tr>
+<td>发票</td>
+<td>发票查验平台验真；发票金额、品名、数量与合同一致；开票时间在合同约定期限内</td>
+</tr>
+<tr>
+<td>发货/签收/验收单</td>
+<td>物流单据或签收凭证或验收报告；内容与合同约定交付物一致；签收/验收时间在发票开具之前或同期</td>
+</tr>
+</tbody>
+</table>
+<h3 id="五-行业准入参考">五、行业准入参考<a class="anchor" href="#五-行业准入参考" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>行业</th>
+<th>目标客户</th>
+<th>确权方式</th>
+<th>风控要点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>装备制造</td>
+<td>汽配/机械零部件供应商</td>
+<td>核心企业应付账款确权（明保理）或三单合一（暗保理）</td>
+<td>发票查验、账期匹配、历史交易流水</td>
+</tr>
+<tr>
+<td>医药流通</td>
+<td>药品/耗材供应商</td>
+<td>医院确认函（财务科盖章）</td>
+<td>医院回款周期、SPD系统记录、退货率</td>
+</tr>
+<tr>
+<td>建材</td>
+<td>水泥/钢材/管材供应商</td>
+<td>总包方进场验收单+合同</td>
+<td>项目备案、财政预算、验收单盖章核验</td>
+</tr>
+<tr>
+<td>能源</td>
+<td>电力/光伏设备供应商</td>
+<td>业主方验收确认</td>
+<td>并网文件、电费收入覆盖</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="第七章-场景五-订单融资">第七章 场景五：订单融资<a class="anchor" href="#第七章-场景五-订单融资" aria-label="定位到本节">#</a></h2>
+<h3 id="一-产品定义-4">一、产品定义<a class="anchor" href="#一-产品定义-4" aria-label="定位到本节">#</a></h3>
+<p>订单融资系基于供应商已取得买方采购订单但尚未形成应收账款的阶段，由保理公司提供融资服务的业务模式。本质：<strong>没有应收账款，只有订单</strong>，须在采购/生产/交付全流程嵌入管控，同时要求主体信用兜底。</p>
+<h3 id="二-准入条件-2">二、准入条件<a class="anchor" href="#二-准入条件-2" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>准入条件</th>
+<th>性质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>买方/卖方至少一方信用评级A+以上，或提供足额资产抵押</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>2</td>
+<td>订单真实可验证（买方书面确认或招投标文件可查）</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>3</td>
+<td>实际控制人连带担保</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>4</td>
+<td>回款账户共管或监管</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>5</td>
+<td>订单不得转包</td>
+<td>硬性条件</td>
+</tr>
+<tr>
+<td>6</td>
+<td>供应商与买方存在≥1年的历史合作记录</td>
+<td>硬性条件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="三-产品要素-2">三、产品要素<a class="anchor" href="#三-产品要素-2" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>采购订单（垫资采购）</th>
+<th>销售订单（备货/生产）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>融资比例</td>
+<td>50%-60%</td>
+<td>50%-60%</td>
+</tr>
+<tr>
+<td>过程管控</td>
+<td>监控原材料采购凭证、到货视频、受托支付至上游</td>
+<td>监控生产进度周报、质检报告、物流轨迹、仓储巡查</td>
+</tr>
+<tr>
+<td>放款节奏</td>
+<td>按采购节点分批放款</td>
+<td>按生产/交付节点分批放款</td>
+</tr>
+</tbody>
+</table>
+<h3 id="四-规模管控">四、规模管控<a class="anchor" href="#四-规模管控" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>首年投放上限</td>
+<td>不超过公司总投放的20%</td>
+</tr>
+<tr>
+<td>单笔上限</td>
+<td>≤200万元</td>
+</tr>
+<tr>
+<td>优先选择</td>
+<td>与核心企业合作稳定的老客户</td>
+</tr>
+</tbody>
+</table>
+<h3 id="五-退出机制">五、退出机制<a class="anchor" href="#五-退出机制" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>触发条件</th>
+<th>处理方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>订单融资不良率＞3%</td>
+<td>暂停新增投放，排查存量</td>
+</tr>
+<tr>
+<td>单笔逾期＞30天</td>
+<td>启动催收，不再对该客户新增订单融资</td>
+</tr>
+<tr>
+<td>底层订单连续2个月未按期交付</td>
+<td>要求提供书面说明及补救方案；无法补救的启动回购</td>
+</tr>
+<tr>
+<td>买方/卖方主体信用重大恶化</td>
+<td>暂停新增，评估存量风险</td>
+</tr>
+</tbody>
+</table>
+<h3 id="六-风险警示">六、风险警示<a class="anchor" href="#六-风险警示" aria-label="定位到本节">#</a></h3>
+<p>订单融资不良率通常高于其他四类产品。核心原因在于融资时点早于应收账款形成，资产确定性最弱。业务开展须坚持：</p>
+<ol>
+<li><strong>先试后扩</strong>：首次合作客户先做1-2单小额试跑，观察交付能力和回款纪律后再逐步扩量</li>
+<li><strong>全程管控</strong>：融资期间须持续跟踪订单执行进度，不得放款后疏于管理</li>
+<li><strong>主体兜底</strong>：必须同时评估买方和卖方的主体信用，至少一方具备较强的偿债能力</li>
+</ol>
+<hr />
+<h2 id="第八章-合规审查要求">第八章 合规审查要求<a class="anchor" href="#第八章-合规审查要求" aria-label="定位到本节">#</a></h2>
+<h3 id="一-合规审查要点">一、合规审查要点<a class="anchor" href="#一-合规审查要点" aria-label="定位到本节">#</a></h3>
+<ol>
+<li><strong>业务定性</strong>：每个项目须明确属于标准保理业务还是其他结构化融资。存在&quot;名为保理、实为借贷或收益权融资&quot;风险的，须由法务和合规部门专项会审</li>
+<li><strong>商品包销场景</strong>：控货+销售网的结构须确保基础交易具备真实商业目的，避免被认定为存货质押融资套用保理之名</li>
+<li><strong>基建保理场景</strong>：须核实项目是否具备合规审批手续，避免介入违规建设项目</li>
+<li><strong>订单融资场景</strong>：须确保融资依据为真实订单而非框架协议或意向性订单</li>
+<li><strong>未来应收账款</strong>：仅接受&quot;有基础法律关系&quot;的未来应收账款（如已签署合同、已确定收费标准），不接受&quot;无基础法律关系&quot;的未来应收账款（如未来可能的销售收入的融资）</li>
+</ol>
+<h3 id="二-法律审查专项要求">二、法律审查专项要求<a class="anchor" href="#二-法律审查专项要求" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>审查事项</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>合同效力审查</td>
+<td>基础合同是否合法有效，是否存在无效或可撤销情形</td>
+</tr>
+<tr>
+<td>转让条款审查</td>
+<td>是否存在禁止转让条款，如有须按第六章第二节处理</td>
+</tr>
+<tr>
+<td>权利冲突排查</td>
+<td>中登网查询+征信查询+出质人书面确认</td>
+</tr>
+<tr>
+<td>通知与登记</td>
+<td>明保理须完成转让通知并取得确认；暗保理须留存通知凭证；中登网登记须在放款前完成</td>
+</tr>
+<tr>
+<td>担保效力审查</td>
+<td>担保决议、授权文件是否完备；上市公司须关注公告义务</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="第九章-审批权限与流程">第九章 审批权限与流程<a class="anchor" href="#第九章-审批权限与流程" aria-label="定位到本节">#</a></h2>
+<h3 id="一-审批权限">一、审批权限<a class="anchor" href="#一-审批权限" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>项目类型</th>
+<th>审批层级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单笔融资金额≤500万元</td>
+<td>风控总监审批</td>
+</tr>
+<tr>
+<td>500万元＜单笔融资金额≤2000万元</td>
+<td>总经理审批</td>
+</tr>
+<tr>
+<td>单笔融资金额＞2000万元</td>
+<td>董事会审批</td>
+</tr>
+<tr>
+<td>订单融资项目</td>
+<td>不论金额，均须总经理审批</td>
+</tr>
+<tr>
+<td>新场景/新品种首笔业务</td>
+<td>不论金额，均须总经理审批</td>
+</tr>
+</tbody>
+</table>
+<h3 id="二-审批流程">二、审批流程<a class="anchor" href="#二-审批流程" aria-label="定位到本节">#</a></h3>
+<pre><code>业务部门立项 → 风控部门审查（含法律审查） → 审批层级审批 → 放款前提条件落实 → 放款 → 保后管理
+</code></pre>
+<p>风控审查须出具书面审查意见，明确列示：准入条件满足情况、六性审查结论、主要风险点及缓释措施、是否建议审批及审批条件。</p>
+<hr />
+<h2 id="附录">附录<a class="anchor" href="#附录" aria-label="定位到本节">#</a></h2>
+<h3 id="附录一-项目申报材料清单">附录一：项目申报材料清单<a class="anchor" href="#附录一-项目申报材料清单" aria-label="定位到本节">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>材料</th>
+<th>明保理</th>
+<th>暗保理</th>
+<th>商品包销</th>
+<th>电商保理</th>
+<th>基建保理</th>
+<th>订单融资</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>营业执照、公司章程、法人身份证</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>2</td>
+<td>近三年审计报告及最新一期财务报表</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>—</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>3</td>
+<td>近一年主要银行账户经营流水</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>4</td>
+<td>征信报告</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>5</td>
+<td>基础交易合同</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>—</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>6</td>
+<td>发票</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>—</td>
+<td>✓</td>
+<td>—</td>
+</tr>
+<tr>
+<td>7</td>
+<td>发货/签收/验收凭证</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>—</td>
+<td>✓</td>
+<td>—</td>
+</tr>
+<tr>
+<td>8</td>
+<td>应收账款确认函（债务人盖章）</td>
+<td>✓</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>✓</td>
+<td>—</td>
+</tr>
+<tr>
+<td>9</td>
+<td>包销协议/代理协议</td>
+<td>—</td>
+<td>—</td>
+<td>✓</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>10</td>
+<td>电商平台店铺后台数据授权</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>✓</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11</td>
+<td>采购订单/招投标文件</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>12</td>
+<td>担保/增信文件</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>—</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>13</td>
+<td>中登网查询结果</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>—</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>14</td>
+<td>回款监管账户开立确认</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<h3 id="附录二-应收账款确认函模板要点">附录二：应收账款确认函模板要点<a class="anchor" href="#附录二-应收账款确认函模板要点" aria-label="定位到本节">#</a></h3>
+<ol>
+<li>确认人名称、地址、联系方式</li>
+<li>基础合同编号、签订日期、合同金额</li>
+<li>已履行义务情况（交付/验收确认）</li>
+<li>应收账款金额、账期、付款条件</li>
+<li>确认应收账款真实、合法、无争议</li>
+<li>确认知悉应收账款转让事宜，同意付款至保理公司指定账户</li>
+<li>确认不存在禁止转让条款</li>
+<li>确认不存在质押、查封等权利负担</li>
+<li>确认人盖章（须为财务/合同专用章或公章）</li>
+</ol>
+<h3 id="附录三-禁入行业-主体清单">附录三：禁入行业/主体清单<a class="anchor" href="#附录三-禁入行业-主体清单" aria-label="定位到本节">#</a></h3>
+<ol>
+<li>房地产开发企业（保障性住房项目另行审批）</li>
+<li>地方融资平台（未纳入财政预算的项目）</li>
+<li>&quot;两高一剩&quot;行业无核心企业兜底的中小供应商</li>
+<li>涉嫌虚拟交易、刷单炒信的电商平台商家</li>
+<li>实缴资本低于100万元且无足额担保的贸易型企业</li>
+<li>近两年存在重大行政处罚或刑事记录的企业</li>
+</ol>
+<hr />
+<p><em>本指引自发布之日起执行，由产品设计与风险管理部负责解释和修订。</em></p>
+
+      </article>
+      <div class="footer">本页面由原 Markdown 文档转换生成，内容以原文为准。</div>
+    </main>
+  </div>
+</body>
+</html>
